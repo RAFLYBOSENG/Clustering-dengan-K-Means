@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Input Clustering - Marketing Campaign</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">Input Data untuk Clustering</h2>
+    <p class="text-muted">Silakan isi formulir di bawah ini untuk melihat hasil pengelompokan pelanggan berdasarkan data marketing campaign.</p>
+    <form action="/result" method="POST">
+        <div class="row mb-3">
+            <div class="col">
+                <label>Rentang Usia</label>
+                <input type="number" name="usia_min" class="form-control" placeholder="Min (18)" required>
+            </div>
+            <div class="col">
+                <label>&nbsp;</label>
+                <input type="number" name="usia_max" class="form-control" placeholder="Max (90)" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label>Rentang Pendapatan</label>
+                <input type="number" name="income_min" class="form-control" placeholder="Min (e.g. 10000)" required>
+            </div>
+            <div class="col">
+                <label>&nbsp;</label>
+                <input type="number" name="income_max" class="form-control" placeholder="Max (e.g. 100000)" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Status Pendidikan</label>
+            <select name="pendidikan" class="form-select">
+                {% for edu in education_levels %}
+                  <option value="{{ edu }}">{{ edu }}</option>
+                {% endfor %}
+              </select>
+        </div>
+        <div class="mb-3">
+            <label>Jumlah Anak</label>
+            <select name="anak" class="form-select">
+                {% for total in anak_options %}
+                  <option value="{{ total }}">{{ total }} anak</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" name="complain" value="1">
+            <label class="form-check-label">Pernah Komplain</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Lihat Hasil Clustering</button>
+    </form>
+</div>
+</body>
+</html>
